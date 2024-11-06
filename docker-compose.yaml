@@ -56,7 +56,7 @@ services:
     # We need to map the WordPress files to show up in our root folder
     volumes:
     # This is the Web root for Apache where the WordPress files are stored
-      - ./MOSS-Wordpress:/var/www/html # Use specific folder for WordPress files
+      - ./MOSS-WordPress:/var/www/html # Use specific folder for WordPress files
     # WordPress environment variabels
     environment: 
       WORDPRESS_DB_HOST: db:3306 # Default port for MySQL
