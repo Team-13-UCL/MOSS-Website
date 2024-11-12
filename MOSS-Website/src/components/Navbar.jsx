@@ -26,7 +26,6 @@
 //         </>
 //     );
 // }
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -42,15 +41,45 @@ export default function NavBar() {
                     />
                 </NavLink>
                 <div className="hidden md:flex space-x-4 text-black font-medium">
-                    <NavLink to="/dit-besoeg" activeClassName="text-yellow-500" className="hover:text-yellow-400">Dit besøg</NavLink>
-                    <NavLink to="/skoletjenesten" activeClassName="text-yellow-500" className="hover:text-yellow-400">Skoletjenesten</NavLink>
-                    <NavLink to="/om-museet" activeClassName="text-yellow-500" className="hover:text-yellow-400">Om museet</NavLink>
-                    <NavLink to="/kontakt" activeClassName="text-yellow-500" className="hover:text-yellow-400">Kontakt os</NavLink>
+                    <NavLink 
+                        to="/dit-besoeg" 
+                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    >
+                        Dit besøg
+                    </NavLink>
+                    <NavLink 
+                        to="/skoletjenesten" 
+                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    >
+                        Skoletjenesten
+                    </NavLink>
+                    <NavLink 
+                        to="/om-museet" 
+                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    >
+                        Om museet
+                    </NavLink>
+                    <NavLink 
+                        to="/kontakt" 
+                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    >
+                        Kontakt os
+                    </NavLink>
                 </div>
             </div>
             <div className="md:flex space-x-4 text-black font-medium mt-4 md:mt-0">
-                <NavLink to="/dorf-moellegaard" activeClassName="text-yellow-500" className="hover:text-yellow-400">Dorf Møllegård</NavLink>
-                <NavLink to="/vildmosemuseet" activeClassName="text-yellow-500" className="hover:text-yellow-400">Vildmosemuseet</NavLink>
+                <NavLink 
+                    to="/dorf-moellegaard" 
+                    className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                >
+                    Dorf Møllegård
+                </NavLink>
+                <NavLink 
+                    to="/vildmosemuseet" 
+                    className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                >
+                    Vildmosemuseet
+                </NavLink>
             </div>
         </nav>
     );
