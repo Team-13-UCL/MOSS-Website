@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
+import { Home, YourVisit, SchoolService, Contact, 
+  NotFound, Activities, Activity, Vild, Dorf, About
+  } from './pages'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <NavBar />
+
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/dit-besoeg' element={<YourVisit />}/>
+      <Route path='/skoletjenesten' element={<SchoolService />}/>
+      {/* <Route path='/butik' element={<Shop />}/> */}
+      <Route path='/om-museet' element={<About />}/>
+      <Route path="/kontakt" element={<Contact />}/>
+      
+      <Route path='/dorf-moellegaard' element={<Dorf />}/> 
+      <Route path='/vildmosemuseet' element={<Vild />}/>
+
+      <Route path="/:museumSlug/aktiviteter" element={<Activities />} />
+      <Route path="/:museumSlug/aktiviteter/:id" element={<Activity />} />
+
+      {/* Routes for testing WordPress REST API */}
+      {/* <Route path='/aktiviteter/:id' element={<ActivityPage />} />
+      <Route path='/butik/produkter/:id' element={<ProductPage />} /> */}
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+
+    <Footer />
+      
     </>
   )
 }
