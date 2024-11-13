@@ -5,7 +5,7 @@ import SocialMediaIcons from './SocialMediaIcons'
 const Footer = () => {
   return (
     <>
-      <div className="bg-red-500">
+      <div className="p-4 shadow-lg">
         <h1>Footer</h1>
         <SocialMediaIcons />
         <RegisterNewsletterForm />
