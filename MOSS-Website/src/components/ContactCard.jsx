@@ -7,7 +7,7 @@ const ContactCard = ({ contact }) => {
     } = contact;
 
     return (
-        <Card className="flex flex-col h-full w-80 ">
+        <Card className="flex flex-col h-full w-80 bg-nameColor bg-opacity-20">
             <CardHeader floated={false} className="h-80">
                 <img src={profilbillede} alt="profile-picture" className="object-cover h-full w-full" />
             </CardHeader>
@@ -15,7 +15,7 @@ const ContactCard = ({ contact }) => {
                 <Typography variant="h4" color="nameColor" className="mb-2 font-bold">
                     {navn}
                 </Typography>
-                <Typography color="blue-gray" className="font-regular" textGradient>
+                <Typography color="gray" className="font-regular text-opacity-70" >
                     {titel}
                 </Typography>
                 <Typography color="nameColor" className="mt-2 font-regular">

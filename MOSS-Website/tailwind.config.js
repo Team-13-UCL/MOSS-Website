@@ -10,9 +10,9 @@ module.exports = withMT({
                 area: ['AreaNormalBold', 'sans-serif'],
             },
             colors: {
-                'menuColor': '#C0996B',
-                'backGroundColor': '#EDC8AF',
-                'nameColor': '#969397',
+                'menuColor': 'rgb(192, 153, 107)',
+                'backGroundColor': 'rgb(237, 200, 175)',
+                'nameColor': 'rgb(150, 147, 151)',
             },
         },
     },

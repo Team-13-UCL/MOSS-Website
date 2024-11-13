@@ -28,8 +28,10 @@ const Contact = () => {
 
   return (
     <div>
-      <h1 className='font-bold'>Ansatte</h1>
-      <ul className="flex flex-wrap gap-5 list-none p-0">
+      <h1 className="text-4xl font-extrabold text-center text-custom-brown m-8">
+        Medarbejdere
+      </h1>
+      <ul className="flex flex-wrap justify-center gap-5 list-none p-0">
         {kontakter.map((kontakt) => (
           <li key={kontakt.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex">
             <ContactCard contact={kontakt} />

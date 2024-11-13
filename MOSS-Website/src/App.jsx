@@ -13,28 +13,24 @@ function App() {
   return (
     <>
       <NavBar />
+      <main className="min-h-screen p-2 bg-backGroundColor bg-opacity-30">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/dit-besoeg' element={<YourVisit />} />
+          <Route path='/skoletjenesten' element={<SchoolService />} />
+          {/* <Route path='/butik' element={<Shop />}/> */}
+          <Route path='/om-museet' element={<About />} />
+          <Route path="/kontakt" element={<Contact />} />
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/dit-besoeg' element={<YourVisit />} />
-        <Route path='/skoletjenesten' element={<SchoolService />} />
-        {/* <Route path='/butik' element={<Shop />}/> */}
-        <Route path='/om-museet' element={<About />} />
-        <Route path="/kontakt" element={<Contact />} />
+          <Route path='/dorf-moellegaard' element={<Dorf />} />
+          <Route path='/vildmosemuseet' element={<Vild />} />
 
-        <Route path='/dorf-moellegaard' element={<Dorf />} />
-        <Route path='/vildmosemuseet' element={<Vild />} />
+          <Route path="/:museumSlug/aktiviteter" element={<Activities />} />
+          <Route path="/:museumSlug/aktiviteter/:id" element={<Activity />} />
 
-        <Route path="/:museumSlug/aktiviteter" element={<Activities />} />
-        <Route path="/:museumSlug/aktiviteter/:id" element={<Activity />} />
-
-        {/* Routes for testing WordPress REST API */}
-        {/* <Route path='/aktiviteter/:id' element={<ActivityPage />} />
-      <Route path='/butik/produkter/:id' element={<ProductPage />} /> */}
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
 
     </>
