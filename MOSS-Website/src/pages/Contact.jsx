@@ -8,11 +8,9 @@ const Contact = () => {
   });
 
   async function fetchKontakter() {
-    const response = await fetch(`https://museum-moss.azurewebsites.net/wp-json/wp/v2/kontakter?acf_format=standard&_fields=acf,id`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}kontakter?acf_format=standard&_fields=acf,id`);
 
     const kontakter = await response.json();
-    console.log(process.env.REACT_APP_API_URL);  // Should print the correct URL
-    console.log(process.env.REACT_APP_API_BASE);  // Should print the correct base URL
 
     return kontakter;
   }
@@ -30,7 +28,7 @@ const Contact = () => {
             <p>{kontakt.acf.titel}</p>
             <p>{kontakt.acf.telefon}</p>
             <p>{kontakt.acf.email}</p>
-            <img src={`https://museum-moss.azurewebsites.net/${kontakt.acf.profilbillede}`} alt={`${kontakt.acf.navn}'s profile`} />
+            <img src={`${import.meta.env.VITE_API_BASE}${kontakt.acf.profilbillede}`} alt={`${kontakt.acf.navn}'s profile`} />
           </li>
         ))}
       </ul>
