@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
     return (
-        <nav className="p-4 shadow-lg">
+        <nav className="p-4 shadow-lg bg-topColor bg-opacity-20">
             <div className="flex justify-between items-center">
                 <NavLink to="/" className="flex items-center space-x-2">
                     <img

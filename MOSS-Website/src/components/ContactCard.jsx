@@ -7,7 +7,7 @@ const ContactCard = ({ contact }) => {
     } = contact;
 
     return (
-        <Card className="flex flex-col h-full w-80 bg-nameColor bg-opacity-20">
+        <Card className="flex flex-col h-full w-80 bg-cardColor bg-opacity-50">
             <CardHeader floated={false} className="h-80">
                 <img src={profilbillede} alt="profile-picture" className="object-cover h-full w-full" />
             </CardHeader>

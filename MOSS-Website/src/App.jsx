@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="min-h-screen p-2 bg-backGroundColor bg-opacity-30">
+      <main className="min-h-screen p-2 bg-backGroundColor bg-opacity-20">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/dit-besoeg' element={<YourVisit />} />
