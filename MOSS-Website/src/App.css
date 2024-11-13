@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'AreaNormalBold';
+    src: url('/assets/fonts/AreaNormalBold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ScandiaRegular';
+    src: url('/assets/fonts/ScandiaRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ScandiaBold';
+    src: url('/assets/fonts/ScandiaBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'ScandiaRegular', sans-serif;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
+import ContactCard from '../components/ContactCard';
 
 const Contact = () => {
   const { data: kontakter, isError, isLoading } = useQuery({
@@ -12,6 +13,13 @@ const Contact = () => {
 
     const kontakter = await response.json();
 
+    kontakter.forEach(kontakt => {
+      const imgUrl = kontakt.acf.profilbillede;
+      if (imgUrl) {
+        kontakt.acf.profilbillede = `${import.meta.env.VITE_API_BASE}${imgUrl}`;
+      }
+    });
+
     return kontakter;
   }
 
@@ -20,15 +28,11 @@ const Contact = () => {
 
   return (
     <div>
-      <h1>Contact</h1>
-      <ul>
+      <h1 className='font-bold'>Ansatte</h1>
+      <ul className="flex flex-wrap gap-5 list-none p-0">
         {kontakter.map((kontakt) => (
-          <li key={kontakt.id}>
-            <h2>{kontakt.acf.navn}</h2>
-            <p>{kontakt.acf.titel}</p>
-            <p>{kontakt.acf.telefon}</p>
-            <p>{kontakt.acf.email}</p>
-            <img src={`${import.meta.env.VITE_API_BASE}${kontakt.acf.profilbillede}`} alt={`${kontakt.acf.navn}'s profile`} />
+          <li key={kontakt.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex">
+            <ContactCard contact={kontakt} />
           </li>
         ))}
       </ul>
@@ -37,3 +41,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

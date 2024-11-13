@@ -12,43 +12,43 @@ export default function NavBar() {
                         className="h-16"
                     />
                 </NavLink>
-                <div className="hidden md:flex space-x-4 text-black font-medium">
+                <div className="hidden md:flex space-x-4 text-black font-medium font-area">
                     <NavLink
                         to="/dit-besoeg"
-                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                        className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                     >
                         Dit besøg
                     </NavLink>
                     <NavLink
                         to="/skoletjenesten"
-                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                        className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                     >
                         Skoletjenesten
                     </NavLink>
                     <NavLink
                         to="/om-museet"
-                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                        className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                     >
                         Om museet
                     </NavLink>
                     <NavLink
                         to="/kontakt"
-                        className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                        className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                     >
                         Kontakt os
                     </NavLink>
                 </div>
             </div>
-            <div className="md:flex space-x-4 text-black font-medium mt-4 md:mt-0">
+            <div className="md:flex space-x-4 text-black font-medium mt-4 md:mt-0 font-area justify-end">
                 <NavLink
                     to="/dorf-moellegaard"
-                    className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                 >
                     Dorf Møllegård
                 </NavLink>
                 <NavLink
                     to="/vildmosemuseet"
-                    className={({ isActive }) => isActive ? "text-yellow-500 hover:text-yellow-400" : "hover:text-yellow-400"}
+                    className={({ isActive }) => isActive ? "text-menuColor hover:text-menuColor" : "hover:text-menuColor"}
                 >
                     Vildmosemuseet
                 </NavLink>
