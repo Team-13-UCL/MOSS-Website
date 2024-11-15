@@ -38,8 +38,8 @@ export default function RegisterNewsletterForm() {
     }
 
     return (
-        <Card color="transparent" shadow={false} className="p-4 max-w-sm mx-auto">
-            <Typography variant="h6" color="blue-gray" className="text-center mb-2">
+        <Card className="p-4 shadow-lg bg-5 bg-opacity-30 text-white max-w-sm mx-auto mb-2">
+            <Typography variant="h6" className="text-center mb-2">
                 Tilmeld dig vores nyhedsbrev!
             </Typography>
             <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
