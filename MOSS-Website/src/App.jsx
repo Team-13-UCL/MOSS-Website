@@ -5,7 +5,8 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import {
   Home, YourVisit, SchoolService, Contact,
-  NotFound, Activities, Activity, Vild, Dorf, About
+  NotFound, Activities, Activity, Vild, Dorf, About,
+  OpeningHoursAndPrices
 } from './pages'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           {/* <Route path='/butik' element={<Shop />}/> */}
           <Route path='/om-museet' element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
+          <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
 
           <Route path='/dorf-moellegaard' element={<Dorf />} />
           <Route path='/vildmosemuseet' element={<Vild />} />
