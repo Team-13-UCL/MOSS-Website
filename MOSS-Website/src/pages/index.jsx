@@ -9,4 +9,6 @@ export { default as Activity } from './Activity';
 export { default as Vild } from './Vild';
 export { default as Dorf } from './Dorf';
 export { default as About } from './About';
+export { default as OpeningHoursAndPrices } from './OpeningHoursAndPrices';
+
 
