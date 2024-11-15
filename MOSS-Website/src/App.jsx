@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 import {
   Home, YourVisit, SchoolService, Contact,
   NotFound, Activities, Activity, Vild, Dorf, About
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="min-h-screen p-2 bg-backGroundColor bg-opacity-20">
+      <main className="min-h-screen p-2 bg-#7 bg-opacity-20">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/dit-besoeg' element={<YourVisit />} />
