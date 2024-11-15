@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="min-h-screen p-2 bg-#7 bg-opacity-20">
+      <main className="min-h-screen p-2 bg-7 bg-opacity-20">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/dit-besoeg' element={<YourVisit />} />
@@ -27,8 +27,8 @@ function App() {
           <Route path='/dorf-moellegaard' element={<Dorf />} />
           <Route path='/vildmosemuseet' element={<Vild />} />
 
-          <Route path="/:museumSlug/aktiviteter" element={<Activities />} />
-          <Route path="/:museumSlug/aktiviteter/:id" element={<Activity />} />
+          <Route path="/aktiviteter" element={<Activities />} />
+          <Route path="/aktiviteter/:id" element={<Activity />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
