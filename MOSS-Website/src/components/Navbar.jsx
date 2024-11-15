@@ -7,12 +7,12 @@ export default function NavBar() {
             <div className="flex justify-between items-center">
                 <NavLink to="/" className="flex items-center space-x-2">
                     <img
-                        src="../assets/MOSS_Logo.png"
+                        src="../assets/images/MOSS_Logo.png"
                         alt="MOSS Logo"
                         className="h-16"
                     />
                 </NavLink>
-                <div className="hidden md:flex space-x-4 text-black font-medium font-area">
+                <div className="hidden md:flex space-x-4 text-black items-center font-medium font-area">
                     <NavLink
                         to="/dit-besoeg"
                         className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
@@ -37,22 +37,30 @@ export default function NavBar() {
                     >
                         Kontakt os
                     </NavLink>
+                    <NavLink
+                        to="/dorf-moellegaard"
+                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
+                    >
+                        <img
+                            src="../assets/images/dorf/DORF LOGO.jpg"
+                            alt="DORF Logo"
+                            className="h-16"
+                        />
+                    </NavLink>
+                    <NavLink
+                        to="/vildmosemuseet"
+                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
+                    >
+                        <img
+                            src="../assets/images/vild/VILDMOSE LOGO.jpg"
+                            alt="VILDMOSE Logo"
+                            className="h-16"
+                        />
+
+                    </NavLink>
                 </div>
             </div>
-            <div className="md:flex space-x-4 text-black font-medium mt-4 md:mt-0 font-area justify-end">
-                <NavLink
-                    to="/dorf-moellegaard"
-                    className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                >
-                    Dorf Møllegård
-                </NavLink>
-                <NavLink
-                    to="/vildmosemuseet"
-                    className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                >
-                    Vildmosemuseet
-                </NavLink>
-            </div>
+
         </nav>
     );
 }
