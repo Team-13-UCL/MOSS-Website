@@ -3,6 +3,7 @@ import RegisterNewsletterForm from './RegisterNewsletterForm';
 import SocialMediaIcons from './SocialMediaIcons';
 import { useQuery } from '@tanstack/react-query';
 import { Card, Typography } from "@material-tailwind/react";
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   const { data: infoData, isLoading: infoLoading, isError: infoError } = useQuery({
@@ -41,12 +42,9 @@ const Footer = () => {
           <Typography variant="paragraph" className="mt-2">
             Børn under 18: {pricesData[0].acf.born_under_18}
           </Typography>
-          <a
-            href="/aabningstider-og-priser"
-            className="text-blue-400 mt-2 inline-block underline"
-          >
-            Se flere priser
-          </a>
+          <NavLink to="/aabningstider-og-priser" className="text-blue-400 mt-2 inline-block underline">
+          Se flere priser
+          </NavLink>
           <Typography variant="paragraph" className="mt-2">
             {pricesData[0].acf.general_info_vildmosemuseet}
           </Typography>
