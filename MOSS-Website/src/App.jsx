@@ -19,7 +19,6 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/dit-besoeg' element={<YourVisit />} />
           <Route path='/skoletjenesten' element={<SchoolService />} />
-          {/* <Route path='/butik' element={<Shop />}/> */}
           <Route path='/om-museet' element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
@@ -28,7 +27,9 @@ function App() {
           <Route path='/vildmosemuseet' element={<Vild />} />
 
           <Route path="/aktiviteter" element={<Activities />} />
-          <Route path="/aktiviteter/:museumSlug/:id" element={<Activity />} />
+          <Route path="/dorf-moellegaard/aktiviteter/:id" element={<Activity />} />
+          <Route path="/vildmosemuseet/aktiviteter/:id" element={<Activity />} />
+          <Route path="/museum-moss/aktiviteter/:id" element={<Activity />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

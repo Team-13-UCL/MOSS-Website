@@ -1,40 +1,65 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
-import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
-const Activity = (activity) => {
-  const {
-    acf: { introtekst, beskrivelse, billede, starttidspunkt, sluttidspunkt, sted, arrangor },
-  } = activity;
+const Activity = () => {
+  const params = useParams();
+
+  const { data: aktivitet, isError, isLoading } = useQuery({
+    queryKey: ["aktivitet"],
+    queryFn: fetchAktivitet,
+  });
+
+  async function fetchAktivitet() {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}aktiviteter/${params.id}?acf_format=standard&_fields=acf,id,title`);
+
+    const aktivitet = await response.json();
+
+
+    const imgUrl = aktivitet.acf.billede;
+    if (imgUrl) {
+      aktivitet.acf.billede = `${import.meta.env.VITE_API_BASE}${imgUrl}`;
+      aktivitet.title = aktivitet.title.rendered;
+    }
+
+    return aktivitet;
+  }
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading activity</div>;
+
+  function convertNewlinesToHTML(str) {
+    return str.replace(/\r?\n/g, "<br />");
+  }
 
   return (
-    <Card className="flex flex-col h-full w-full w-100 bg-1 bg-opacity-50">
+    <Card className="flex flex-col justify-center items-center h-full w-full w-100 bg-2 bg-opacity-50">
       <CardHeader floated={false} className="h-80">
-        <img src={billede} alt="picture" className="object-cover h-full w-full" />
+        <img src={aktivitet.acf.billede} alt="picture" className="object-cover h-full w-full" />
       </CardHeader>
       <CardBody className="text-center">
         <Typography variant="h4" className="mb-2 font-bold">
-          {activity.title}
+          {aktivitet.title}
         </Typography>
-        <Typography color="9" className="mt-2 font-regular" >
-          {introtekst}
-        </Typography>
-        <div dangerouslySetInnerHTML={{ __html: beskrivelse }} />
+        <div
+          className="text-9 mt-2 font-regular text-left"
+          dangerouslySetInnerHTML={{
+            __html: convertNewlinesToHTML(aktivitet.acf.beskrivelse) || "",
+          }}
+        />
         <Typography className="text-9 mt-2 font-regular text-left">
-          <span className="font-bold">Starttidspunkt:</span> {starttidspunkt}
-        </Typography>
-        <Typography className="text-9 mt-2 font-regular text-left">
-          <span className="font-bold">Sluttidspunkt:</span> {sluttidspunkt}
-        </Typography>
-        <Typography className="text-9 mt-2 font-regular text-left">
-          <span className="font-bold">Arrangør:</span> {arrangor}
+          <span className="font-bold">Starttidspunkt:</span> {aktivitet.acf.starttidspunkt}
         </Typography>
         <Typography className="text-9 mt-2 font-regular text-left">
-          <span className="font-bold">Sted:</span> {sted}
+          <span className="font-bold">Sluttidspunkt:</span> {aktivitet.acf.sluttidspunkt}
         </Typography>
-        <NavLink className="text-red-500" to={`/aktiviteter/${activity.id}`}>
-          Læs mere
-        </NavLink>
+        <Typography className="text-9 mt-2 font-regular text-left">
+          <span className="font-bold">Arrangør:</span> {aktivitet.acf.arrangor}
+        </Typography>
+        <Typography className="text-9 mt-2 font-regular text-left">
+          <span className="font-bold">Sted:</span> {aktivitet.acf.sted}
+        </Typography>
       </CardBody>
 
     </Card >

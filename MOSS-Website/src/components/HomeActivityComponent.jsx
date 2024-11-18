@@ -24,7 +24,7 @@ const HomeActivityComponent = () => {
         aktiviteter.sort((a, b) => {
             const dateA = new Date(a.acf.starttidspunkt);
             const dateB = new Date(b.acf.starttidspunkt);
-            return dateB - dateA; 
+            return dateB - dateA;
         });
 
         return aktiviteter;
@@ -37,44 +37,42 @@ const HomeActivityComponent = () => {
     const museumVildActivities = aktiviteter.filter(a => a.acf.arrangor === "Vildmosemuseet");
     const museumDorfActivities = aktiviteter.filter(a => a.acf.arrangor === "Dorf Møllegård");
 
-    const museumNavLinks = 
-    [{ id: 1, link: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo", aktiviteter: museumDorfActivities },
-        {id: 2, link: "/vildmosemuseet", src: "../assets/images/vild/VILDMOSE LOGO.jpg", alt: "VILD Logo", aktiviteter: museumVildActivities }
-     ]
+    const museumNavLinks =
+        [{ id: 1, link: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo", aktiviteter: museumDorfActivities },
+        { id: 2, link: "/vildmosemuseet", src: "../assets/images/vild/VILDMOSE LOGO.jpg", alt: "VILD Logo", aktiviteter: museumVildActivities }
+        ]
 
     return (
-    <div className="flex flex-col gap-10">
-        <ul className="flex flex-wrap justify-center gap-5 list-none p-0">
-        {museumNavLinks.map((museum) => (
-            <li 
-            key={museum.id} 
-            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex flex-col items-center"
-            >
-            {/* NavLink for the museum */}
-            <NavLink to={museum.link} className="mb-4">
-                <img
-                src={museum.src}
-                alt={museum.alt}
-                className="w-full h-auto object-cover mb-4 hover:scale-105 transition-transform"
-                />
-            </NavLink>
-    
-            {/* Activities associated with the museum */}
-            <ul className="flex flex-col gap-3">
-                {museum.aktiviteter.map((aktivitet) => (
-                <li 
-                    key={aktivitet.id} 
-                    className="w-full flex justify-center"
-                >
-                    <ActivityCard activity={aktivitet} />
-                </li>
+        <div className="flex flex-col gap-10">
+            <ul className="flex flex-wrap justify-center gap-5 list-none p-0">
+                {museumNavLinks.map((museum) => (
+                    <li
+                        key={museum.id}
+                        className="l sm:w-1/1 md:w-1/2 lg:w-1/3 flex flex-col items-center"
+                    >
+                        <NavLink to={museum.link}>
+                            <img
+                                src={museum.src}
+                                alt={museum.alt}
+                                className="w-full h-auto object-cover mb-4 hover:scale-105 transition-transform"
+                            />
+                        </NavLink>
+
+                        <ul className="flex flex-col gap-3">
+                            {museum.aktiviteter.map((aktivitet) => (
+                                <li
+                                    key={aktivitet.id}
+                                    className="w-full flex justify-center"
+                                >
+                                    <ActivityCard activity={aktivitet} />
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
                 ))}
             </ul>
-            </li>
-        ))}
-        </ul>
-    </div>
+        </div>
     );
-}      
+}
 
 export default HomeActivityComponent

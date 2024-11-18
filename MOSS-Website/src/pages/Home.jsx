@@ -6,9 +6,9 @@ const Home = () => {
 
   return (
     <><div>Home</div>
-        <div>
-        <HomeActivityComponent />
-        </div>
+
+      <HomeActivityComponent />
+
     </>
   )
 }
