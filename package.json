@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@eslint/plugin-kit": "^0.2.3"
+  }
+}

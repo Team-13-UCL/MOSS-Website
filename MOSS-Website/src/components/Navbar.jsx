@@ -1,66 +1,86 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu"; // Import the new component
 
 export default function NavBar() {
-    return (
-        <nav className="p-4 shadow-lg bg-4 bg-opacity-20">
-            <div className="flex justify-between items-center">
-                <NavLink to="/" className="flex items-center space-x-2">
-                    <img
-                        src="../assets/images/MOSS_Logo.png"
-                        alt="MOSS Logo"
-                        className="h-16"
-                    />
-                </NavLink>
-                <div className="hidden md:flex space-x-4 text-black items-center font-medium font-area">
-                    <NavLink
-                        to="/dit-besoeg"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        Dit besøg
-                    </NavLink>
-                    <NavLink
-                        to="/skoletjenesten"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        Skoletjenesten
-                    </NavLink>
-                    <NavLink
-                        to="/om-museet"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        Om museet
-                    </NavLink>
-                    <NavLink
-                        to="/kontakt"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        Kontakt os
-                    </NavLink>
-                    <NavLink
-                        to="/dorf-moellegaard"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        <img
-                            src="../assets/images/dorf/DORF LOGO.jpg"
-                            alt="DORF Logo"
-                            className="h-16"
-                        />
-                    </NavLink>
-                    <NavLink
-                        to="/vildmosemuseet"
-                        className={({ isActive }) => isActive ? "text-6 hover:text-6" : "hover:text-6"}
-                    >
-                        <img
-                            src="../assets/images/vild/VILDMOSE LOGO.jpg"
-                            alt="VILDMOSE Logo"
-                            className="h-16"
-                        />
+  const aboutLinks = [
+    { label: "Nyheder", path: "/nyheder" },
+    { label: "Sponsorer", path: "/sponsorer" },
+    { label: "Bestyrelser", path: "/bestyrelser" },
+  ];
 
-                    </NavLink>
-                </div>
-            </div>
+  return (
+    <nav className="p-4 shadow-lg bg-4 bg-opacity-20">
+      <div className="flex justify-between items-center">
+        {/* Logo Section */}
+        <NavLink to="/" className="flex items-center space-x-2">
+          <img
+            src="../assets/images/MOSS_Logo.png"
+            alt="MOSS Logo"
+            className="h-16"
+          />
+        </NavLink>
 
-        </nav>
-    );
+        {/* Navigation Links */}
+        <div className="hidden md:flex space-x-6 text-black items-center font-area text-base font-normal">
+          {/* Nav Links */}
+          <NavLink
+            to="/dit-besoeg"
+            className={({ isActive }) =>
+              `py-2 ${isActive ? "text-6 font-medium" : "hover:text-6"}`
+            }
+          >
+            Dit besøg
+          </NavLink>
+          <NavLink
+            to="/skoletjenesten"
+            className={({ isActive }) =>
+              `py-2 ${isActive ? "text-6 font-medium" : "hover:text-6"}`
+            }
+          >
+            Skoletjenesten
+          </NavLink>
+
+          {/* Dropdown Menu */}
+          <DropdownMenu title="Om museet" links={aboutLinks} />
+
+          {/* Additional Nav Links */}
+          <NavLink
+            to="/kontakt"
+            className={({ isActive }) =>
+              `py-2 ${isActive ? "text-6 font-medium" : "hover:text-6"}`
+            }
+          >
+            Kontakt os
+          </NavLink>
+
+          {/* Museum Logos */}
+          <NavLink
+            to="/dorf-moellegaard"
+            className={({ isActive }) =>
+              `py-2 ${isActive ? "text-6 hover:text-6" : "hover:text-6"}`
+            }
+          >
+            <img
+              src="../assets/images/dorf/DORF LOGO.jpg"
+              alt="DORF Logo"
+              className="h-12 align-middle"
+            />
+          </NavLink>
+          <NavLink
+            to="/vildmosemuseet"
+            className={({ isActive }) =>
+              `py-2 ${isActive ? "text-6 hover:text-6" : "hover:text-6"}`
+            }
+          >
+            <img
+              src="../assets/images/vild/VILDMOSE LOGO.jpg"
+              alt="VILDMOSE Logo"
+              className="h-12 align-middle"
+            />
+          </NavLink>
+        </div>
+      </div>
+    </nav>
+  );
 }
