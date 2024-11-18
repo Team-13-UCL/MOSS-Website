@@ -18,6 +18,10 @@ const OpeningHoursAndPrices = () => {
   if (isLoading) return <div className="text-center text-lg">Loading...</div>;
   if (isError) return <div className="text-center text-lg">Error loading data</div>;
 
+  function convertNewlinesToHTML(str) {
+    return str.replace(/\r?\n/g, "<br />");
+  }
+
   return (
     <div className="container mx-auto my-8 p-6">
      
@@ -39,7 +43,7 @@ const OpeningHoursAndPrices = () => {
           </ul>
           <h3 className="text-xl font-bold mt-6">Åbningstider i år</h3>
           <div className="mt-4">
-            <div dangerouslySetInnerHTML={{ __html: data.aabningstider_i_2024 }} />
+            <div dangerouslySetInnerHTML={{ __html: convertNewlinesToHTML(data.aabningstider_i_2024) }} />
           </div>
           <p className="mt-4">{data.kontakt_museet}</p>
         </div>
