@@ -1,46 +1,19 @@
-import React from 'react'
+import React from 'react';
 import ActivityCard from '../components/ActivityCard';
-import { useQuery } from '@tanstack/react-query';
 import { NavLink } from 'react-router-dom';
+import { useActivities } from '../hooks/useActivities';
 
 const HomeActivityComponent = () => {
-    const { data: aktiviteter, isError, isLoading } = useQuery({
-        queryKey: ["aktiviteter"],
-        queryFn: fetchAktiviteter,
-    });
-
-    async function fetchAktiviteter() {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}aktiviteter?acf_format=standard&_fields=acf,id,title&per_page=10`);
-
-        const aktiviteter = await response.json();
-
-        aktiviteter.forEach(aktivitet => {
-            const imgUrl = aktivitet.acf.billede;
-            if (imgUrl) {
-                aktivitet.acf.billede = `${import.meta.env.VITE_API_BASE}${imgUrl}`;
-                aktivitet.title = aktivitet.title.rendered;
-            }
-        });
-        aktiviteter.sort((a, b) => {
-            const dateA = new Date(a.acf.starttidspunkt);
-            const dateB = new Date(b.acf.starttidspunkt);
-            return dateB - dateA;
-        });
-
-        return aktiviteter;
-    }
+    const { aktiviteter: museumVildActivities, isError, isLoading } = useActivities("Vild");
+    const { aktiviteter: museumDorfActivities } = useActivities("Dorf");
 
     if (isLoading) return <div>Loading...</div>;
-    if (isError) return <div>Error loading contacts</div>;
+    if (isError) return <div>Error loading activities</div>;
 
-    // Group activities by museum
-    const museumVildActivities = aktiviteter.filter(a => a.acf.arrangor === "Vildmosemuseet");
-    const museumDorfActivities = aktiviteter.filter(a => a.acf.arrangor === "Dorf Møllegård");
-
-    const museumNavLinks =
-        [{ id: 1, link: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo", aktiviteter: museumDorfActivities },
+    const museumNavLinks = [
+        { id: 1, link: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo", aktiviteter: museumDorfActivities },
         { id: 2, link: "/vildmosemuseet", src: "../assets/images/vild/VILDMOSE LOGO.jpg", alt: "VILD Logo", aktiviteter: museumVildActivities }
-        ]
+    ];
 
     return (
         <div className="flex flex-col gap-10">
@@ -73,6 +46,6 @@ const HomeActivityComponent = () => {
             </ul>
         </div>
     );
-}
+};
 
-export default HomeActivityComponent
+export default HomeActivityComponent;

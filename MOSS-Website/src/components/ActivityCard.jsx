@@ -36,7 +36,7 @@ const ActivityCard = ({ activity }) => {
 
 
     return (
-        <Card className={`flex flex-col min-h-80 max-h-80 ${cardBgColor}`}>
+        <Card className={`flex flex-col min-h-80 max-h-80 ${cardBgColor} mb-2`}>
             <CardBody className=" justify-between text-center">
                 <div className="w-full h-6 mb-2 overflow-hidden flex flex justify-end">
                     <NavLink to={`/${cardRoute}/aktiviteter/${activity.id}`}>

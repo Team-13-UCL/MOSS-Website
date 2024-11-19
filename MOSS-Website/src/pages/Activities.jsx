@@ -1,30 +1,9 @@
 import React from 'react'
 import ActivityCard from '../components/ActivityCard';
-import { useQuery } from '@tanstack/react-query';
+import { useActivities } from '../hooks/useActivities';
 
 const Activities = () => {
-  const { data: aktiviteter, isError, isLoading } = useQuery({
-    queryKey: ["aktiviteter"],
-    queryFn: fetchAktiviteter,
-  });
-
-  async function fetchAktiviteter() {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}aktiviteter?acf_format=standard&_fields=acf,id,title`);
-
-    const aktiviteter = await response.json();
-
-    aktiviteter.forEach(aktivitet => {
-      const imgUrl = aktivitet.acf.billede;
-      if (imgUrl) {
-        aktivitet.acf.billede = `${import.meta.env.VITE_API_BASE}${imgUrl}`;
-        aktivitet.title = aktivitet.title.rendered;
-      }
-    });
-
-
-
-    return aktiviteter;
-  }
+  const { aktiviteter, isError, isLoading } = useActivities('');
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading activities</div>;

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import DropdownMenu from "./DropdownMenu"; // Import the new component
+import DropdownMenu from "./DropdownMenu";
 
 export default function NavBar() {
   const aboutLinks = [
@@ -25,12 +25,12 @@ export default function NavBar() {
         <div className="hidden md:flex space-x-6 text-black items-center font-area text-base font-normal">
           {/* Nav Links */}
           <NavLink
-            to="/dit-besoeg"
+            to="/aktiviteter"
             className={({ isActive }) =>
               `py-2 ${isActive ? "text-6 font-medium" : "hover:text-6"}`
             }
           >
-            Dit besøg
+            Det sker
           </NavLink>
           <NavLink
             to="/skoletjenesten"
