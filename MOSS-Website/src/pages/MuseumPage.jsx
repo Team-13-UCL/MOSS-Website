@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import MuseumSideBar from '../components/MuseumSideBar';
-import DetSker from '../components/DetSker';
-import OmMuseet from '../components/OmMuseet';
-import AabningstiderOgPriser from '../components/AabningstiderOgPriser';
-import PraktiskInformation from '../components/PraktiskInformation';
-import Skoletjenesten from '../components/Skoletjenesten';
-import CafeButik from '../components/CafeButik';
-import Projekter from '../components/Projekter';
-import EfterDitBesøg from '../components/EfterDitBesøg';
-import BlivFrivillig from '../components/BlivFrivillig';
-import Møllelaug from '../components/Møllelaug';
+import React, { useState } from "react";
+import MuseumSideBar from "../components/MuseumSideBar";
+import DetSker from "../components/DetSker";
+import OmMuseet from "../components/OmMuseet";
+import AabningstiderOgPriser from "../components/AabningstiderOgPriser";
+import PraktiskInformation from "../components/PraktiskInformation";
+import Skoletjenesten from "../components/Skoletjenesten";
+import CafeButik from "../components/CafeButik";
+import Projekter from "../components/Projekter";
+import EfterDitBesøg from "../components/EfterDitBesøg";
+import BlivFrivillig from "../components/BlivFrivillig";
+import Møllelaug from "../components/Møllelaug";
+import BannerCarousel from "../components/BannerCarousel";
+import { museums } from "../data/museumImages";
 
-const MuseumPage = ({ museum, bannerSrc }) => {
+const MuseumPage = ({ museum }) => {
+
+    const museumImages = museums.find((m) => m.id === museum);
+
   const commonLinks = [
     { label: "Det Sker", component: <DetSker museum={museum} /> },
     { label: "Om Museet", component: <OmMuseet museum={museum} /> },
@@ -24,7 +29,7 @@ const MuseumPage = ({ museum, bannerSrc }) => {
     { label: "Bliv frivillig", component: <BlivFrivillig museum={museum} /> },
   ];
 
-  if (museum === 'Dorf') {
+  if (museum === "Dorf") {
     commonLinks.push({
       label: "Møllelaug",
       component: <Møllelaug museum={museum} />,
@@ -38,7 +43,8 @@ const MuseumPage = ({ museum, bannerSrc }) => {
 
   return (
     <div>
-      <img src={bannerSrc} alt={`${museum} banner`} />
+      <BannerCarousel images={museumImages.images} />
+
       <div className="flex">
         <div>
           <MuseumSideBar
