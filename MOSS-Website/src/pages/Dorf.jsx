@@ -20,7 +20,7 @@ const Dorf = () => {
     { label: "Praktisk Information", component: <PraktiskInformation museum={'Dorf'} /> },
     { label: "Skoletjenesten", component: <Skoletjenesten museum={'Dorf'} /> },
     { label: "Café & Butik", component: <CafeButik museum={'Dorf'} /> },
-    { label: "Projekter", component: <Projekter museum={'Dorf'}  /> },
+    { label: "Projekter", component: <Projekter museum={'Dorf'} /> },
     { label: "Efter dit besøg", component: <EfterDitBesøg museum={'Dorf'} /> },
     { label: "Bliv frivillig", component: <BlivFrivillig museum={'Dorf'} /> },
     { label: "Møllelaug", component: <Møllelaug museum={'Dorf'} /> },
@@ -36,7 +36,7 @@ const Dorf = () => {
     <div>
       <img src="..\assets\images\dorf\DORF Banner.png" alt="banner" />
       <div className='flex'>
-        <div className='w-1/4'>
+        <div>
           <MuseumSideBar
             title='Dorf Møllegård'
             links={sideBarLinks}
@@ -44,7 +44,7 @@ const Dorf = () => {
             setSelectedLink={setSelectedLink}
           />
         </div>
-        <div className="flex-grow">
+        <div className="flex-grow w-1/4 p-2">
           {selectedComponent}
         </div>
       </div>
