@@ -11,7 +11,7 @@ const DetSker = ({ museum }) => {
     return (
         <div className='flex flex-row h-full '>
             {aktiviteter.map((aktivitet) => (
-                <div className='w-1/2 p-2'>
+                <div key={aktivitet.id} className='w-1/2 p-2'>
                     <ActivityCard key={aktivitet.id} activity={aktivitet} />
                 </div>
             ))}
