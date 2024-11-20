@@ -25,7 +25,6 @@ const AabningstiderOgPriser = ({ museum }) => {
           <li>Lørdag: {data.loerdag}</li>
           <li>Søndag: {data.soendag}</li>
         </ul>
-        <h3 className="text-xl font-bold mt-6"></h3>
         <div className="mt-4">
           <div dangerouslySetInnerHTML={{ __html: convertNewlinesToHTML(data.specielle_abningstider) }} />
         </div>
