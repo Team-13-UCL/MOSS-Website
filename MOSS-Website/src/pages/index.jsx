@@ -6,13 +6,12 @@ export { default as Contact } from './Contacts';
 export { default as NotFound } from './NotFound';
 export { default as Activities } from './Activities';
 export { default as Activity } from './Activity';
-export { default as Vild } from './Vild';
-export { default as Dorf } from './Dorf';
 export { default as About } from './About';
 export { default as OpeningHoursAndPrices } from './OpeningHoursAndPrices';
 export { default as News } from './News';
 export { default as Sponsors } from './Sponsors';
 export { default as Boards } from './Boards';
+export { default as MuseumPage } from './MuseumPage'
 
 
 

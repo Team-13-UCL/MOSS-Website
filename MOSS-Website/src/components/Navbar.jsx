@@ -9,6 +9,11 @@ export default function NavBar() {
     { label: "Bestyrelser", path: "/bestyrelser" },
   ];
 
+  const museumLogos = [
+  { to: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo" },
+  { to: "/vildmosemuseet", src: "../assets/images/vild/VILDMOSE LOGO.jpg", alt: "VILDMOSE Logo" },
+  ];
+
   return (
     <nav className="p-4 shadow-lg bg-4 bg-opacity-20">
       <div className="flex justify-between items-center">
@@ -54,31 +59,18 @@ export default function NavBar() {
             Kontakt os
           </NavLink>
 
-          {/* Museum Logos */}
+         {/* Museum Logos */}
+        {museumLogos.map(({ to, src, alt }) => (
           <NavLink
-            to="/dorf-moellegaard"
+            key={to}
+            to={to}
             className={({ isActive }) =>
               `py-2 ${isActive ? "text-6 hover:text-6" : "hover:text-6"}`
             }
           >
-            <img
-              src="../assets/images/dorf/DORF LOGO.jpg"
-              alt="DORF Logo"
-              className="h-12 align-middle"
-            />
+            <img src={src} alt={alt} className="h-12 align-middle" />
           </NavLink>
-          <NavLink
-            to="/vildmosemuseet"
-            className={({ isActive }) =>
-              `py-2 ${isActive ? "text-6 hover:text-6" : "hover:text-6"}`
-            }
-          >
-            <img
-              src="../assets/images/vild/VILDMOSE LOGO.jpg"
-              alt="VILDMOSE Logo"
-              className="h-12 align-middle"
-            />
-          </NavLink>
+        ))}
         </div>
       </div>
     </nav>

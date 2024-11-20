@@ -11,8 +11,20 @@ const HomeActivityComponent = () => {
     if (isError) return <div>Error loading activities</div>;
 
     const museumNavLinks = [
-        { id: 1, link: "/dorf-moellegaard", src: "../assets/images/dorf/DORF LOGO.jpg", alt: "DORF Logo", aktiviteter: museumDorfActivities },
-        { id: 2, link: "/vildmosemuseet", src: "../assets/images/vild/VILDMOSE LOGO.jpg", alt: "VILD Logo", aktiviteter: museumVildActivities }
+    {
+        id: 1,
+        link: "/dorf-moellegaard",
+        src: "../assets/images/dorf/DORF LOGO.jpg",
+        alt: "DORF Logo",
+        aktiviteter: museumDorfActivities,
+    },
+    {
+        id: 2,
+        link: "/vildmosemuseet",
+        src: "../assets/images/vild/VILDMOSE LOGO.jpg",
+        alt: "VILD Logo",
+        aktiviteter: museumVildActivities,
+    },
     ];
 
     return (
