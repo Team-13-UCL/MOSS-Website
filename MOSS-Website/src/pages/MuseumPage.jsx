@@ -56,7 +56,7 @@ const MuseumPage = () => {
   };
 
   const selectedComponent =
-    commonLinks.find((link) => link.path === section)?.component || <DetSker museum={museum} />;
+    commonLinks.find((link) => link.path === section)?.component || null;
 
   return (
     <div>
