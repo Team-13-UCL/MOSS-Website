@@ -32,7 +32,7 @@ function App() {
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
 
-          {/* Dynamic routing for any museum */}
+          {/* Dynamic Routing for any museum */}
           <Route path="/:slug/:section?" element={<MuseumPage />} />
 
           <Route path="/aktiviteter" element={<Activities />} />
