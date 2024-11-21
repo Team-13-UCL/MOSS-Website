@@ -2,6 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 
 export function useHoursAndPrices(museum) {
 
+    const { data, isError, isLoading } = useQuery({
+        queryKey: ['openingHoursAndPrices'],
+        queryFn: fetchOpeningHoursAndPrices,
+    });
+
     let slug = '';
 
     if (museum !== '') {
@@ -20,11 +25,6 @@ export function useHoursAndPrices(museum) {
         }
     }
 
-    const { data, isError, isLoading } = useQuery({
-        queryKey: ['openingHoursAndPrices'],
-        queryFn: fetchOpeningHoursAndPrices,
-    });
-
     async function fetchOpeningHoursAndPrices() {
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}hours-and-prices?slug=${slug}&_fields=acf`
@@ -40,5 +40,5 @@ export function useHoursAndPrices(museum) {
         return result[0].acf;
     }
 
-    return { data, isLoading, isError };
+    return { data, isError, isLoading };
 }

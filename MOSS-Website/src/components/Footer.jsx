@@ -8,39 +8,50 @@ import { useHoursAndPrices } from "../hooks/useHoursAndPrices";
 
 const Footer = () => {
 
-  const { data, isError, isLoading } = useHoursAndPrices('moss');
+  const { data: hoursAndPrices, isError: hoursError, isLoading: hoursLoading } = useHoursAndPrices("Moss");
 
-  const { data: infoData, isLoading: infoLoading, isError: infoError } = useQuery({
+  const { data: museumInfo, isError: infoError, isLoading: infoLoading } = useQuery({
     queryKey: ['museumInfo'],
     queryFn: fetchMuseumInfo,
   });
+
+
+    console.log(hoursAndPrices)
 
   // Function to fetch museum contact information
   async function fetchMuseumInfo() {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}museumsinfo/65/?_fields=id,slug,acf`
     );
+
     if (!response.ok) {
       throw new Error('Error fetching museum info');
     }
-    return response.json();
+
+    const museumInfo = await response.json();
+
+    return museumInfo;
   }
 
   if (infoLoading) return <div>Loading...</div>;
-  if (infoError) return <div>Error loading activities</div>;
+  if (infoError) return <div>Error loading museums info...</div>;
+
+  if (hoursLoading) {return <div>Loading...</div>}
+  if (hoursError) {return <div>Error fetching opening hours and prices...</div>;}
+
 
   return (
     <div className="p-4 shadow-lg bg-5 bg-opacity-30 text-white grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Åbningstider og Priser */}
       <Card className="p-4 shadow-lg bg-5 bg-opacity-30 text-white">
         <ul className="space-y-1">
-          <li>Mandag: {data.mandag}</li>
-          <li>Tirsdag: {data.tirsdag}</li>
-          <li>Onsdag: {data.onsdag}</li>
-          <li>Torsdag: {data.torsdag}</li>
-          <li>Fredag: {data.fredag}</li>
-          <li>Lørdag: {data.loerdag}</li>
-          <li>Søndag: {data.soendag}</li>
+          <li>Mandag: {hoursAndPrices.mandag}</li>
+          <li>Tirsdag: {hoursAndPrices.tirsdag}</li>
+          <li>Onsdag: {hoursAndPrices.onsdag}</li>
+          <li>Torsdag: {hoursAndPrices.torsdag}</li>
+          <li>Fredag: {hoursAndPrices.fredag}</li>
+          <li>Lørdag: {hoursAndPrices.loerdag}</li>
+          <li>Søndag: {hoursAndPrices.soendag}</li>
         </ul>
 
         <p className='p-2'></p>
@@ -63,22 +74,22 @@ const Footer = () => {
         <img className='mb-2' src='../assets/images/MOSS_Logo.png' />
         <div>
           <Typography variant="paragraph" className="font-bold">
-            {infoData.acf.navn}
+            {museumInfo.acf.navn}
           </Typography>
           <Typography variant="paragraph">
-            {infoData.acf.adresse}
+            {museumInfo.acf.adresse}
           </Typography>
           <Typography variant="paragraph" className="mb-4">
-            {infoData.acf.postnummer_by}
+            {museumInfo.acf.postnummer_by}
           </Typography>
           <Typography variant="paragraph">
-            Telefon: {infoData.acf.telefon}
+            Telefon: {museumInfo.acf.telefon}
           </Typography>
           <Typography variant="paragraph">
-            Email: {infoData.acf.email}
+            Email: {museumInfo.acf.email}
           </Typography>
           <Typography variant="paragraph" className="mb-4">
-            CVR: {infoData.acf.cvr}
+            CVR: {museumInfo.acf.cvr}
           </Typography>
         </div>
       </Card>
