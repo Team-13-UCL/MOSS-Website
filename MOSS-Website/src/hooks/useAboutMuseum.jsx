@@ -14,10 +14,10 @@ export default function useAboutMuseum(museum)
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}om-museet?acf_format=standard&slug=${slug}&_fields=id,title,slug,acf`
         );
-        
+
         if (!response.ok) {
             console.error("API Error:", response.statusText);
-            throw new Error("Failed to fetch opening hours and prices");
+            throw new Error("Failed to fetch information about the museum.");
         }
 
         const museumData = await response.json();
