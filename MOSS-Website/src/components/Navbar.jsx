@@ -1,12 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
+import AboutMuseum from "./AboutMuseum";
 
 export default function NavBar() {
   const aboutLinks = [
-    { label: "Nyheder", path: "/nyheder" },
-    { label: "Sponsorer", path: "/sponsorer" },
-    { label: "Bestyrelser", path: "/bestyrelser" },
+    { label: "Nyheder", path: "/nyheder", component: <AboutMuseum />},
+    { label: "Sponsorer", path: "/sponsorer", component: <AboutMuseum /> },
+    { label: "Bestyrelser", path: "/bestyrelser", component: <AboutMuseum /> },
+    { label: "Strategi", path: "/strategi", component: <AboutMuseum /> },
+    { label: "Vedtægter", path: "/vedtaegter", component: <AboutMuseum /> },
+    { label: "Årsrapporter", path: "/aarsrapporter", component: <AboutMuseum /> },
+    { label: "Persondatapolitik", path: "/persondata-politik", component: <AboutMuseum /> },
+    { label: "Klimacertifikat", path: "/klimacertifikat", component: <AboutMuseum /> },
   ];
 
   const museumLogos = [
