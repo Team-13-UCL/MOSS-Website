@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AboutMuseum from "./components/AboutMuseum";
 import {
   Home,
   YourVisit,
@@ -38,6 +39,9 @@ function App() {
           <Route path="/aktiviteter" element={<Activities />} />
           <Route path="/:slug/aktiviteter/:id" element={<Activity />} />
 
+          
+          {/* Dynamic Routing for "Om Museet" dropdown menu */}
+          <Route path="/:section" element={<AboutMuseum />} />
           <Route path="/nyheder" element={<News />} />
           <Route path="/sponsorer" element={<Sponsors />} />
           <Route path="/bestyrelser" element={<Boards />} />
