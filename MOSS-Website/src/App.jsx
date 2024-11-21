@@ -32,13 +32,11 @@ function App() {
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
 
-          <Route path="/dorf-moellegaard" element={<MuseumPage museum="Dorf" />} />
-          <Route path="/vildmosemuseet" element={<MuseumPage museum="Vild" />} />
+          {/* Dynamic routing for any museum */}
+          <Route path="/:slug/:section?" element={<MuseumPage />} />
 
           <Route path="/aktiviteter" element={<Activities />} />
-          <Route path="/dorf-moellegaard/aktiviteter/:id" element={<Activity />} />
-          <Route path="/vildmosemuseet/aktiviteter/:id" element={<Activity />} />
-          <Route path="/museum-moss/aktiviteter/:id" element={<Activity />} />
+          <Route path="/:slug/aktiviteter/:id" element={<Activity />} />
 
           <Route path="/nyheder" element={<News />} />
           <Route path="/sponsorer" element={<Sponsors />} />

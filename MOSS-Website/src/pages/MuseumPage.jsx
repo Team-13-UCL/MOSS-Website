@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import MuseumSideBar from "../components/MuseumSideBar";
 import DetSker from "../components/DetSker";
 import OmMuseet from "../components/OmMuseet";
@@ -13,45 +14,60 @@ import Møllelaug from "../components/Møllelaug";
 import BannerCarousel from "../components/BannerCarousel";
 import { museums } from "../data/museumImages";
 
-const MuseumPage = ({ museum }) => {
+const MuseumPage = () => {
+  const { slug, section } = useParams(); 
+  const navigate = useNavigate();
 
-    const museumImages = museums.find((m) => m.id === museum);
+  const museum =
+    slug === "dorf-moellegaard"
+      ? "Dorf"
+      : slug === "vildmosemuseet"
+      ? "Vild"
+      : null;
+
+  if (!museum) {
+    return <div>Museum not found</div>;
+  }
+
+  const museumImages = museums.find((m) => m.id === museum);
 
   const commonLinks = [
-    { label: "Det Sker", component: <DetSker museum={museum} /> },
-    { label: "Om Museet", component: <OmMuseet museum={museum} /> },
-    { label: "Åbningstider & Priser", component: <AabningstiderOgPriser museum={museum} /> },
-    { label: "Praktisk Information", component: <PraktiskInformation museum={museum} /> },
-    { label: "Skoletjenesten", component: <Skoletjenesten museum={museum} /> },
-    { label: "Café & Butik", component: <CafeButik museum={museum} /> },
-    { label: "Projekter", component: <Projekter museum={museum} /> },
-    { label: "Efter dit besøg", component: <EfterDitBesøg museum={museum} /> },
-    { label: "Bliv frivillig", component: <BlivFrivillig museum={museum} /> },
+    { label: "Det Sker", path: "det-sker", component: <DetSker museum={museum} /> },
+    { label: "Om Museet", path: "om-museet", component: <OmMuseet museum={museum} /> },
+    { label: "Åbningstider & Priser", path: "aabningstider-og-priser", component: <AabningstiderOgPriser museum={museum} /> },
+    { label: "Praktisk Information", path: "praktisk-information", component: <PraktiskInformation museum={museum} /> },
+    { label: "Skoletjenesten", path: "skoletjenesten", component: <Skoletjenesten museum={museum} /> },
+    { label: "Café & Butik", path: "cafe-butik", component: <CafeButik museum={museum} /> },
+    { label: "Projekter", path: "projekter", component: <Projekter museum={museum} /> },
+    { label: "Efter dit besøg", path: "efter-dit-besog", component: <EfterDitBesøg museum={museum} /> },
+    { label: "Bliv frivillig", path: "bliv-frivillig", component: <BlivFrivillig museum={museum} /> },
   ];
 
   if (museum === "Dorf") {
     commonLinks.push({
       label: "Møllelaug",
+      path: "moellelaug",
       component: <Møllelaug museum={museum} />,
     });
   }
 
-  const [selectedLink, setSelectedLink] = useState("");
+  const handleNavigation = (path) => {
+    navigate(`/${slug}/${path}`);
+  };
 
   const selectedComponent =
-    commonLinks.find((link) => link.label === selectedLink)?.component || null;
+    commonLinks.find((link) => link.path === section)?.component || <DetSker museum={museum} />;
 
   return (
     <div>
       <BannerCarousel images={museumImages.images} />
-
       <div className="flex">
         <div>
           <MuseumSideBar
-            title={museum === 'Dorf' ? 'Dorf Møllegård' : 'Vildmosemuseet'}
+            title={museum === "Dorf" ? "Dorf Møllegård" : "Vildmosemuseet"}
             links={commonLinks}
-            selectedLink={selectedLink}
-            setSelectedLink={setSelectedLink}
+            activePath={section}
+            onNavigate={handleNavigation}
           />
         </div>
         <div className="flex-grow w-1/4 p-2">{selectedComponent}</div>
