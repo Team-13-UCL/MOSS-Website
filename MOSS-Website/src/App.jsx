@@ -3,7 +3,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AboutMuseum from "./components/AboutMuseum";
 import {
   Home,
   YourVisit,
@@ -14,9 +13,6 @@ import {
   Activity,
   About,
   OpeningHoursAndPrices,
-  News,
-  Sponsors,
-  Boards,
   MuseumPage
 } from "./pages";
 
@@ -29,22 +25,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dit-besoeg" element={<YourVisit />} />
           <Route path="/skoletjenesten" element={<SchoolService />} />
-          <Route path="/om-museet" element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
 
-          {/* Dynamic Routing for any museum */}
-          <Route path="/:slug/:section?" element={<MuseumPage />} />
+          <Route path="/om-museet/:sectionSlug" element={<About />} />
+          <Route path="/:museumSlug/:section?" element={<MuseumPage />} />
 
           <Route path="/aktiviteter" element={<Activities />} />
           <Route path="/:slug/aktiviteter/:id" element={<Activity />} />
-
-          
-          {/* Dynamic Routing for "Om Museet" dropdown menu */}
-          <Route path="/:section" element={<AboutMuseum />} />
-          <Route path="/nyheder" element={<News />} />
-          <Route path="/sponsorer" element={<Sponsors />} />
-          <Route path="/bestyrelser" element={<Boards />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

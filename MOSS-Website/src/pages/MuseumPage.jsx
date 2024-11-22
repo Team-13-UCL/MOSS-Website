@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import MuseumSideBar from "../components/MuseumSideBar";
 import DetSker from "../components/DetSker";
@@ -15,13 +15,14 @@ import BannerCarousel from "../components/BannerCarousel";
 import { museums } from "../data/museumImages";
 
 const MuseumPage = () => {
-  const { slug, section } = useParams(); 
+  const { museumSlug, section } = useParams();
   const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState(section || "det-sker"); 
 
   const museum =
-    slug === "dorf-moellegaard"
+    museumSlug === "dorf-moellegaard"
       ? "Dorf"
-      : slug === "vildmosemuseet"
+      : museumSlug === "vildmosemuseet"
       ? "Vild"
       : null;
 
@@ -52,11 +53,14 @@ const MuseumPage = () => {
   }
 
   const handleNavigation = (path) => {
-    navigate(`/${slug}/${path}`);
+    setActiveSection(path); 
+    navigate(`/${museumSlug}/${path}`); 
   };
 
   const selectedComponent =
-    commonLinks.find((link) => link.path === section)?.component || null;
+    commonLinks.find((link) => link.path === activeSection)?.component || (
+      <p>Vælg en sektion fra menuen.</p>
+    );
 
   return (
     <div>
@@ -66,7 +70,7 @@ const MuseumPage = () => {
           <MuseumSideBar
             title={museum === "Dorf" ? "Dorf Møllegård" : "Vildmosemuseet"}
             links={commonLinks}
-            activePath={section}
+            activePath={activeSection}
             onNavigate={handleNavigation}
           />
         </div>

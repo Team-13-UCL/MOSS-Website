@@ -1,18 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
-import AboutMuseum from "./AboutMuseum";
+import { About } from "../pages";
 
 export default function NavBar() {
   const aboutLinks = [
-    { label: "Nyheder", path: "/nyheder", component: <AboutMuseum />},
-    { label: "Sponsorer", path: "/sponsorer", component: <AboutMuseum /> },
-    { label: "Bestyrelser", path: "/bestyrelser", component: <AboutMuseum /> },
-    { label: "Strategi", path: "/strategi", component: <AboutMuseum /> },
-    { label: "Vedtægter", path: "/vedtaegter", component: <AboutMuseum /> },
-    { label: "Årsrapporter", path: "/aarsrapporter", component: <AboutMuseum /> },
-    { label: "Persondatapolitik", path: "/persondata-politik", component: <AboutMuseum /> },
-    { label: "Klimacertifikat", path: "/klimacertifikat", component: <AboutMuseum /> },
+    { label: "Nyheder", path: "/om-museet/nyheder", component: <About />},
+    { label: "Sponsorer", path: "/om-museet/sponsorer", component: <About /> },
+    { label: "Bestyrelser", path: "/om-museet/bestyrelser", component: <About /> },
+    { label: "Strategi", path: "/om-museet/strategi", component: <About /> },
+    { label: "Vedtægter", path: "/om-museet/vedtaegter", component: <About /> },
+    { label: "Årsrapporter", path: "/om-museet/aarsrapporter", component: <About /> },
+    { label: "Persondatapolitik", path: "/om-museet/persondata-politik", component: <About /> },
+    { label: "Klimacertifikat", path: "/om-museet/klimacertifikat", component: <About /> },
   ];
 
   const museumLogos = [

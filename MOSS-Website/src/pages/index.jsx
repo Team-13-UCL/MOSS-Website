@@ -8,9 +8,6 @@ export { default as Activities } from './Activities';
 export { default as Activity } from './Activity';
 export { default as About } from './About';
 export { default as OpeningHoursAndPrices } from './OpeningHoursAndPrices';
-export { default as News } from './News';
-export { default as Sponsors } from './Sponsors';
-export { default as Boards } from './Boards';
 export { default as MuseumPage } from './MuseumPage'
 
 

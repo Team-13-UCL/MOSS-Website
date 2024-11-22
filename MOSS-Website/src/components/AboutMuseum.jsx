@@ -1,7 +1,7 @@
 import React from "react";
 
-const AboutMuseum = ({link}) => {
-    return <div>Om Museets { link.label }</div>;
+const AboutMuseum = () => {
+    return <div>Om Museet</div>;
 };
 
 export default AboutMuseum;

@@ -11,9 +11,9 @@ const MuseumSideBar = ({ title, links, activePath, onNavigate }) => {
       </div>
       <List>
         {links.map((link) => (
-          <ListItem key={link.path}>
+          <ListItem key={link.label}>
             <button
-              onClick={() => onNavigate(link.path)}
+              onClick={() => onNavigate(link.path)} // Trigger the navigation handler
               className={`font-area ${
                 activePath === link.path
                   ? "text-6 font-medium"
