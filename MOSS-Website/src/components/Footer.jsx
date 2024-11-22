@@ -15,9 +15,6 @@ const Footer = () => {
     queryFn: fetchMuseumInfo,
   });
 
-
-    console.log(hoursAndPrices)
-
   // Function to fetch museum contact information
   async function fetchMuseumInfo() {
     const response = await fetch(
