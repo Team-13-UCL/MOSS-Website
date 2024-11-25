@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query'; // Ensure this is imported
+import { useQuery } from '@tanstack/react-query'; 
 
 function convertNewlinesToHTML(str) {
   return str.replace(/\r?\n/g, "<br />");
