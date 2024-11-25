@@ -17,14 +17,14 @@ import { museums } from "../data/museumImages";
 const MuseumPage = () => {
   const { museumSlug, section } = useParams();
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState(section || "det-sker"); 
+  const [activeSection, setActiveSection] = useState(section || "det-sker");
 
   const museum =
     museumSlug === "dorf-moellegaard"
       ? "Dorf"
       : museumSlug === "vildmosemuseet"
-      ? "Vild"
-      : null;
+        ? "Vild"
+        : null;
 
   if (!museum) {
     return <div>Museum not found</div>;
@@ -53,8 +53,8 @@ const MuseumPage = () => {
   }
 
   const handleNavigation = (path) => {
-    setActiveSection(path); 
-    navigate(`/${museumSlug}/${path}`); 
+    setActiveSection(path);
+    navigate(`/${museumSlug}/${path}`);
   };
 
   const selectedComponent =
@@ -63,8 +63,10 @@ const MuseumPage = () => {
     );
 
   return (
-    <div>
-      <BannerCarousel images={museumImages.images} />
+    <div >
+      <div className="w-full h-[50vh]">
+        <BannerCarousel images={museumImages.images} />
+      </div>
       <div className="flex">
         <div>
           <MuseumSideBar
