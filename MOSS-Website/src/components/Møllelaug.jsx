@@ -1,6 +1,6 @@
 import React from "react";
 
-const Møllelaug = ({museum}) => {
+const Møllelaug = () => {
   return <div>Møllelaug</div>;
 };
 
