@@ -12,7 +12,6 @@ import ClimateCertificate from "../components/ClimateCertificate";
 
 const About = () => {
   const { sectionSlug } = useParams();
-  console.log(sectionSlug);
   const navigate = useNavigate();
   const [activeSlug, setActiveSlug] = useState(sectionSlug || "nyheder");
   const [renderedComponent, setRenderedComponent] = useState(null);

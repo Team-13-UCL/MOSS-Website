@@ -15,6 +15,7 @@ import {
   OpeningHoursAndPrices,
   MuseumPage
 } from "./pages";
+import NewsDetail from "./components/NewsDetail";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           <Route path="/aabningstider-og-priser" element={<OpeningHoursAndPrices />} />
 
           <Route path="/om-museet/:sectionSlug" element={<About />} />
+          <Route path="/om-museet/nyheder/:id" element={<NewsDetail />} />
+
+
           <Route path="/:museumSlug/:section?" element={<MuseumPage />} />
 
           <Route path="/aktiviteter" element={<Activities />} />
