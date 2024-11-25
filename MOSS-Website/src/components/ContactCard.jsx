@@ -12,13 +12,13 @@ const ContactCard = ({ contact }) => {
                 <img src={profilbillede} alt="profile-picture" className="object-cover h-full w-full" />
             </CardHeader>
             <CardBody className="text-center">
-                <Typography variant="h4" color="9" className="mb-2 font-bold">
+                <Typography variant="h4" className="mb-2 font-bold">
                     {navn}
                 </Typography>
                 <Typography color="gray" className="font-regular text-opacity-70" >
                     {titel}
                 </Typography>
-                <Typography className="text-9mt-2 font-regular">
+                <Typography className="text-9 mt-2 font-regular">
                     <strong>Tel.:</strong> {telefon}
                 </Typography>
                 <Typography className="text-9 mt-1 font-regular">
