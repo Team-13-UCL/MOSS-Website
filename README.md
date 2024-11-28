@@ -18,5 +18,5 @@ Museet ønskede en mere tydelig opdeling af de to museer samt intuitiv navigatio
 #### Kontakt os
 <img width="500" alt="Kontakt os" src="https://github.com/user-attachments/assets/6de809b6-678b-43ab-aa3a-df71c4697c69">
 
-#### Navbar
-<img width="500" alt="Navbar" src="https://github.com/user-attachments/assets/61ada896-28fd-494a-b960-e7ed6a951781">
+#### Footer
+<img width="500" alt="Footer" src="https://github.com/user-attachments/assets/456f5094-782e-4c93-8ca1-7689bcd52869">
