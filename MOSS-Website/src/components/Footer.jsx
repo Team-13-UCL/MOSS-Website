@@ -41,6 +41,9 @@ const Footer = () => {
     <div className="p-4 shadow-lg bg-5 bg-opacity-30 text-white grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Åbningstider og Priser */}
       <Card className="p-4 shadow-lg bg-5 bg-opacity-30 text-white">
+        <Typography variant="paragraph" className="font-bold mb-2">
+            Åbningstider
+          </Typography>
         <ul className="space-y-1">
           <li>Mandag: {hoursAndPrices.mandag}</li>
           <li>Tirsdag: {hoursAndPrices.tirsdag}</li>
