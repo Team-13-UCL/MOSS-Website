@@ -1,6 +1,7 @@
 ## Ny hjemmeside til Museum Moss
-I vores 4. semesterprojektet har vi bygget en ny hjemmeside i React til Museum For Forsyning og Bæredygtighed, som er et paraplymuseum for de to museer Dorf Møllegård og Vildmosemuseet.
-Museet ønskede en mere tydelig opdeling af de to museer samt intuitiv navigation og design. 
+I vores 4. semesterprojektet har vi bygget en ny hjemmeside i React til Museum For Forsyning og Bæredygtighed
+Museet er et paraplymuseum for de to museer Dorf Møllegård og Vildmosemuseet.
+De ønskede en mere tydelig opdeling af de to museer samt intuitiv navigation og design. 
 
 ### Eksempler fra hjemmesiden
 #### Forside
