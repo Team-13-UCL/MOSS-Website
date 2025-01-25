@@ -1,9 +1,35 @@
-import React from 'react'
+import React from "react";
+import useSchoolService from "../hooks/useSchoolService";
 
-const SchoolService = () => {
-  return (
-    <div>Skoletjenesten</div>
-  )
+function convertNewlinesToHTML(str) {
+    return str.replace(/\r?\n/g, "<br />");
 }
 
-export default SchoolService
+const Skoletjenesten = ({ museum }) => {
+    const { data: schoolService, isLoading, isError } = useSchoolService();
+
+    if (isLoading) return <div>Loading...</div>;
+    if (isError) return <div>Error loading Skoletjenesten information.</div>;
+
+    console.log("School service data:", schoolService); // Log the fetched data
+
+    return (
+        <div>
+            {schoolService && schoolService.map((item) => (
+                <div key={item.id}>
+                    <div
+                        className="font-regular"
+                        dangerouslySetInnerHTML={{
+                            __html: convertNewlinesToHTML(item.acf.beskrivelse) || "",
+                        }}
+                    />
+                    {item.acf.billede_1 && (
+                        <img src={item.acf.billede_1.url} alt={item.acf.billede_1.alt} />
+                    )}
+                </div>
+            ))}
+        </div>
+    );
+};
+
+export default Skoletjenesten;

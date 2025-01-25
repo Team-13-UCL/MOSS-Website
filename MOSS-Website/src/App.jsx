@@ -23,7 +23,6 @@ function App() {
     <>
       <NavBar />
       <main className="min-h-screen max-w-screen p-2 bg-7 bg-opacity-20">
-        {{ useSchoolService }}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dit-besoeg" element={<YourVisit />} />

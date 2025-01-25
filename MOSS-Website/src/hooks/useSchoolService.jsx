@@ -26,7 +26,7 @@ export default function useSchoolService() {
     };
 
     const { data: aboutMuseum = [], isError, isLoading } = useQuery({
-        queryKey: ["aboutMuseum", slug],
+        queryKey: ["aboutMuseum" ],
         queryFn: fetchAboutMuseum,
     });
 

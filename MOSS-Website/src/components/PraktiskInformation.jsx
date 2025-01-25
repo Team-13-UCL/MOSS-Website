@@ -4,4 +4,4 @@ const PraktiskInformation = ({museum}) => {
   return <div>Praktisk Information</div>;
 };
 
-export default PraktiskInformation;
+export default PraktiskInformation; 
