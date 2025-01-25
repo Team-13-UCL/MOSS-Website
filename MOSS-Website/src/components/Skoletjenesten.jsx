@@ -6,16 +6,14 @@ function convertNewlinesToHTML(str) {
 }
 
 const Skoletjenesten = ({ museum }) => {
-    const { data: schoolService, isLoading, isError } = useSchoolService();
+    const { data, isLoading, isError } = useSchoolService();
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading Skoletjenesten information.</div>;
 
-    console.log("School service data:", schoolService); // Log the fetched data
-
     return (
         <div>
-            {schoolService && schoolService.map((item) => (
+            {data && data.map((item) => (
                 <div key={item.id}>
                     <div
                         className="font-regular"

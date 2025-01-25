@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function useSchoolService() {
 
-    const fetchAboutMuseum = async () => {
+    const fetchSchoolService = async () => {
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}skoletjenesten?acf_format=standard&_fields=id,acf`
         );
@@ -12,23 +12,25 @@ export default function useSchoolService() {
             throw new Error("Failed to fetch information about the school service.");
         }
 
-        const museumData = await response.json();
-        console.log(museumData);
-        const beskrivelse = museum.acf['beskrivelse'];
-        const imagePath = museum.acf[`billede_1`];
+        const schoolServiceData = await response.json();
 
-        if (imagePath) {
-            museum.acf[imageKey] = `${import.meta.env.VITE_API_BASE}${imagePath}`;
-        }
-        ;
+        schoolServiceData.forEach((museum) => {
+            for (let i = 1; i <= 5; i++) {
+                const imageKey = `billede_${i}`;
+                const imagePath = museum.acf[imageKey];
+                if (imagePath) {
+                    museum.acf[imageKey] = `${import.meta.env.VITE_API_BASE}${imagePath}`;
+                }
+            }
+        });
 
-        return museumData;
+        return schoolServiceData;
     };
 
-    const { data: aboutMuseum = [], isError, isLoading } = useQuery({
-        queryKey: ["aboutMuseum" ],
-        queryFn: fetchAboutMuseum,
+    const { data: schoolServiceData = [], isError, isLoading } = useQuery({
+        queryKey: ["aboutMuseum"],
+        queryFn: fetchSchoolService,
     });
 
-    return { data: aboutMuseum, isLoading, isError };
+    return { data: schoolServiceData, isLoading, isError };
 }
